@@ -8,11 +8,14 @@ import java.awt.Color;
 import java.awt.Font;
 import java.awt.Image;
 import javax.swing.*;
+import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 /**
  *
  * @author anusha
  */
-public class Dashboard extends JFrame{
+public class Dashboard extends JFrame implements ActionListener{
     Dashboard(){
         setBounds(0,0, 1920,1000);
         setLayout(null);
@@ -40,6 +43,7 @@ public class Dashboard extends JFrame{
         mb.add(hotel);
         
         JMenuItem reception = new JMenuItem("RECEPTION");
+        reception.addActionListener(this);
         hotel.add(reception);
         
         JMenu admin = new JMenu("ADMIN");
@@ -47,17 +51,35 @@ public class Dashboard extends JFrame{
         mb.add(admin);
         
         JMenuItem addemployee = new JMenuItem("ADD EMPLOYEE");
+        addemployee.addActionListener(this);
         admin.add(addemployee);
         
         JMenuItem addrooms = new JMenuItem("ADD ROOMS");
+        addrooms.addActionListener(this);
         admin.add(addrooms);
         
         JMenuItem adddriver = new JMenuItem("ADD DRIVER");
+        adddriver.addActionListener(this);
         admin.add(adddriver);
         
         setVisible(true);
         
     }
+    
+    public void actionPerformed(ActionEvent ae){
+        if(ae.getActionCommand().equals("ADD EMPLOYEE")){
+            new AddEmployee();
+        }else if(ae.getActionCommand().equals("ADD ROOMS")){
+            new AddRooms();
+        }else if (ae.getActionCommand().equals("ADD DRIVER")){
+            new AddDriver();
+        }else if(ae.getActionCommand().equals("RECEPTION")){
+            new Reception();
+        }
+            
+        
+    }
+    
     public static void main(String args[]){
         new Dashboard();
     }
