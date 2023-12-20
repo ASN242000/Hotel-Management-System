@@ -6,20 +6,23 @@
 package hotel.management.system;
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.*;
 /**
  *
  * @author anusha
  */
-public class Reception extends JFrame{
+public class Reception extends JFrame implements ActionListener{
+    JButton newCustomer;
     Reception(){
         
         getContentPane().setBackground(Color.WHITE);
         setLayout(null);
         
-        JButton newCustomer = new JButton("New Customer Form");
+        newCustomer = new JButton("New Customer Form");
         newCustomer.setBounds(10,20,200,30);
         newCustomer.setBackground(Color.BLACK);
         newCustomer.setForeground(Color.WHITE);
+        newCustomer.addActionListener(this);
         add(newCustomer);
         
         JButton rooms = new JButton("Rooms");
@@ -95,6 +98,12 @@ public class Reception extends JFrame{
         
         setBounds(350,200,800, 570);
         setVisible(true);
+    }
+    public void actionPerformed(ActionEvent ae){
+        if(ae.getSource() == newCustomer){
+            setVisible(false);
+            new AddCustomer();
+        }
     }
     public static void main(String args[]){
         new Reception();
