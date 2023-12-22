@@ -12,7 +12,7 @@ import java.awt.event.*;
  * @author anusha
  */
 public class Reception extends JFrame implements ActionListener{
-    JButton newCustomer;
+    JButton newCustomer, rooms, department;
     Reception(){
         
         getContentPane().setBackground(Color.WHITE);
@@ -25,16 +25,18 @@ public class Reception extends JFrame implements ActionListener{
         newCustomer.addActionListener(this);
         add(newCustomer);
         
-        JButton rooms = new JButton("Rooms");
+        rooms = new JButton("Rooms");
         rooms.setBounds(10,70,200,30);
         rooms.setBackground(Color.BLACK);
         rooms.setForeground(Color.WHITE);
+        rooms.addActionListener(this);
         add(rooms);
         
-        JButton department = new JButton("Department");
+        department = new JButton("Department");
         department.setBounds(10,110,200,30);
         department.setBackground(Color.BLACK);
         department.setForeground(Color.WHITE);
+        department.addActionListener(this);
         add(department);
         
         JButton allEmployee = new JButton("All Employees");
@@ -103,6 +105,12 @@ public class Reception extends JFrame implements ActionListener{
         if(ae.getSource() == newCustomer){
             setVisible(false);
             new AddCustomer();
+        }else if (ae.getSource() == rooms){
+            setVisible(false);
+            new Room();
+        }else if(ae.getSource() == department){
+            setVisible(false);
+            new Department();
         }
     }
     public static void main(String args[]){
